@@ -53,11 +53,11 @@ function plugin($name) //Inciar Plugins
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         ';
      }
-     function html_js($url) //Incluir archivo JavaScript por url
+     function import_js($url) //Incluir archivo JavaScript por url
       {
         echo '<script src=" '.$url.' "></script>';
       }
-    function html_css($url) //Incluir hoja de estilos por url
+    function import_css($url) //Incluir hoja de estilos por url
       {
         echo '<link rel="stylesheet" href="'.$url.'">';
       }
@@ -78,31 +78,57 @@ function plugin($name) //Inciar Plugins
 
 
 // Etiquetas Html
-     function h($size,$text,$style,$other) // titulos
+
+/*
+  Para un mejor orden del desarrollo se implementa una id el cual puede ser definido o no mediante el metodo
+  etiqueta_html(id,campos..);
+  esta id servira para identificarse para dar estilo desde css
+  y luego ser importado en el mismo codigo Monkey
+*/
+     function h($size,$id,$text) // titulos  h( tamaño, id , texto );
       {
-        echo '<h'.$size.' style="'.$style.'" '.$other.'>'.$text.'</h'.$size.'>';
-        return '<h'.$size.' style="'.$style.'" '.$other.'>'.$text.'</h'.$size.'>'; //generar h1,2,3,4,5,6,.. con texto
+        echo '<h'.$size.' id="'.$id.'" >'.$text.'</h'.$size.'>'; //generar h1,2,3,4,5,6,.. con texto
       }
 
-      function a($text,$style,$url,$other) // Enlaces
+      function a($id,$text,$url) // Enlaces
        {
-         echo '<a href="'.$url.'" style="'.$style.'" '.$other.' >'.$text.'</a>'; //generar h1,2,3,4,5,6,.. con texto
+         echo '<a href="'.$url.'" id="'.$id.'" >'.$text.'</a>'; //generar h1,2,3,4,5,6,.. con texto
        }
-       function b($text,$style,$other) // Enlaces
+       function b($id,$text) // Enlaces
         {
-          echo '<b style="'.$style.'" '.$other.' >'.$text.'</b>'; //generar h1,2,3,4,5,6,.. con texto
+          echo '<b style="'.$id.'" >'.$text.'</b>'; //generar h1,2,3,4,5,6,.. con texto
         }
+      function img($id,$url) // Enlaces
+         {
+           echo '<img src="'.$url.'" id="'.$id.'" ></img>'; //generar h1,2,3,4,5,6,.. con texto
+         }
+      function iframe($id,$url) // Enlaces
+          {
+            echo '<iframe src="'.$url.'" id="'.$id.'" ></iframe>'; //generar h1,2,3,4,5,6,.. con texto
+          }
+      function embed($id,$url) // Enlaces
+          {
+            echo '<embed src="'.$url.'" id="'.$id.'" ></embed>'; //generar h1,2,3,4,5,6,.. con texto
+          }
+      function br($num) // Enlaces
+          {
+            for($num;$num>0;$num--){ //generar numero de saltos de linea
+                echo '<br>'; //imprimir salto de linea
+            }
+
+          }
+
 //Vistas
-function end() //Creacion de login
+function end() //Cerrar cualquier div
     {
       echo '</div>';
     }
 
 
-function contenedor() //Creacion de login
+function contenedor($id) //Creacion de login
       {
         echo '
-        <div class="container">
+        <div class="container" id="'.$id.'">
         ';
       }
 }

@@ -8,15 +8,15 @@
 class Classer
 {
 
-  function _index()
+  function _index() // http://localhost/crazy_monkey/?/index
    {
-     //echo $_GET['index'];
+     //echo $_GET['index']; muestra datos enviados por get
      $monkey = new Crazy_monkey(); //inicializamos la libreria
-     $monkey -> plugin('index'); //archivo banana a activar
+     $monkey -> plugin('index'); //archivo a activar
      //autor: Zollyer
      //descripccion: este archivo sirve para mostrar hola mundo
    }
-   function test()
+   function _test() // http://localhost/crazy_monkey/?/test
     {
       $monkey = new Crazy_monkey(); //inicializamos la libreria
       $monkey -> plugin('test'); //archivo banana a activar
